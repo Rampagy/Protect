@@ -1,0 +1,35 @@
+#:kivy 2.0.0
+
+<MenuBarWidget>:
+    orientation: 'vertical'
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: (1, 0.05)
+
+        Button:
+            text: 'Save'
+            on_press:
+                app.current_editor_text = editor.text
+                app.save_file()
+
+        Button:
+            text: 'Exit'
+            on_press:
+                app.stop()
+
+        Button:
+            text: 'Save & Exit'
+            on_press:
+                app.current_editor_text = editor.text
+                app.save_file()
+                app.stop()
+
+    ScrollView:
+        id: editor_scrollview
+
+        TextInput:
+            id: editor
+            text: app.default_text
+            size_hint: (1, None)
+            height: max( self.minimum_height, editor_scrollview.height )

@@ -1,0 +1,1 @@
+/home/alex/protect/dummy.txt
